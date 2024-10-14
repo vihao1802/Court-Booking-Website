@@ -1,6 +1,30 @@
-import { Box, Button, Link, TextField, Typography } from "@mui/material";
+"use client";
+import {
+  Box,
+  Button,
+  IconButton,
+  InputAdornment,
+  Link,
+  TextField,
+  Typography,
+} from "@mui/material";
+import * as Yup from "yup";
+import { Form, Formik, Field, ErrorMessage } from "formik";
+import { useState } from "react";
+import { Visibility, VisibilityOffOutlined } from "@mui/icons-material";
+
+const SignInSchema = Yup.object().shape({
+  email: Yup.string().email("Email không hợp lệ").required("Email là bắt buộc"),
+  password: Yup.string().required("Mật khẩu là bắt buộc"),
+});
 
 const SignInPage = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <Box
       sx={{
@@ -83,54 +107,94 @@ const SignInPage = () => {
               padding: "10px",
             }}
           >
-            <TextField
-              fullWidth
-              id="outlined-basic"
-              label="Email"
-              variant="outlined"
-              margin="dense"
-              size="medium"
-              color="success"
-            />
-            <TextField
-              fullWidth
-              id="outlined-basic"
-              label="Mật khẩu"
-              variant="outlined"
-              margin="dense"
-              size="medium"
-              color="success"
-            />
-            <Typography
-              sx={{
-                textAlign: "right",
+            <Formik
+              initialValues={{ email: "", password: "" }}
+              validationSchema={SignInSchema}
+              onSubmit={async (values) => {
+                console.log(values);
               }}
             >
-              <Link
-                sx={{
-                  color: "gray",
-                  cursor: "pointer",
-                  textDecoration: "none",
-                }}
-                href={"/password-recovery"}
-              >
-                Quên mật khẩu
-              </Link>
-            </Typography>
-            <Button
-              size="large"
-              sx={{
-                marginTop: "10px",
-                width: "100%",
-                color: "white",
-                backgroundColor: "green",
-                ":hover": {
-                  backgroundColor: "darkgreen",
-                },
-              }}
-            >
-              Đăng nhập
-            </Button>
+              {({ errors, touched }) => (
+                <Form>
+                  <Field
+                    as={TextField}
+                    name="email"
+                    type="email"
+                    fullWidth
+                    id="email"
+                    label="Email"
+                    variant="outlined"
+                    margin="dense"
+                    size="medium"
+                    color="success"
+                    error={touched.email && !!errors.email}
+                    helperText={<ErrorMessage name="email" />}
+                  />
+                  <Field
+                    as={TextField}
+                    name="password"
+                    type={showPassword ? "text" : "password"}
+                    fullWidth
+                    id="password"
+                    label="Password"
+                    variant="outlined"
+                    margin="dense"
+                    size="medium"
+                    color="success"
+                    error={touched.password && !!errors.password}
+                    helperText={<ErrorMessage name="password" />}
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={togglePasswordVisibility}
+                            onMouseDown={togglePasswordVisibility}
+                          >
+                            {showPassword ? (
+                              <VisibilityOffOutlined sx={{ color: "black" }} />
+                            ) : (
+                              <Visibility sx={{ color: "black" }} />
+                            )}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                  <Typography
+                    sx={{
+                      textAlign: "right",
+                    }}
+                  >
+                    <Link
+                      sx={{
+                        color: "gray",
+                        cursor: "pointer",
+                        textDecoration: "none",
+                      }}
+                      href={"/password-recovery"}
+                    >
+                      Quên mật khẩu
+                    </Link>
+                  </Typography>
+                  <Button
+                    type="submit"
+                    size="large"
+                    sx={{
+                      marginTop: "10px",
+                      width: "100%",
+                      color: "white",
+                      backgroundColor: "var(--buttonColor)",
+                      ":hover": {
+                        backgroundColor: "var(--buttonHoverColor)",
+                      },
+                    }}
+                  >
+                    Đăng nhập
+                  </Button>
+                </Form>
+              )}
+            </Formik>
           </Box>
 
           <Box>

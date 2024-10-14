@@ -12,8 +12,6 @@ export const RecoveryContext = createContext<{
   setEmail: React.Dispatch<React.SetStateAction<string>>;
   otp: number;
   setOTP: React.Dispatch<React.SetStateAction<number>>;
-  showConfetti: boolean;
-  setShowConfetti: React.Dispatch<React.SetStateAction<boolean>>;
 }>({
   page: "login",
   setPage: () => {},
@@ -21,15 +19,12 @@ export const RecoveryContext = createContext<{
   setEmail: () => {},
   otp: 0,
   setOTP: () => {},
-  showConfetti: false,
-  setShowConfetti: () => {},
 });
 
 const PasswordRecoveryPage = () => {
   const [page, setPage] = useState("send-email");
   const [email, setEmail] = useState("");
   const [otp, setOTP] = useState(0);
-  const [showConfetti, setShowConfetti] = useState(false);
 
   const NavigateComponents = () => {
     if (page === "send-email") return <SendOTPEmail />;
@@ -48,8 +43,6 @@ const PasswordRecoveryPage = () => {
         setEmail,
         otp,
         setOTP,
-        showConfetti,
-        setShowConfetti,
       }}
     >
       <div className="flex justify-center items-center h-[100vh]">

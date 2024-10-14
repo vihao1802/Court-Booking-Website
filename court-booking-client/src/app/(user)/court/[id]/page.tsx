@@ -581,6 +581,7 @@ const CourtDetail = ({ params: { id } }: { params: { id: string } }) => {
         </Box>
         {/* Box booking button*/}
         <BoxBookingButton
+          courtId={id}
           rentalPricePerHour={courtDetail.rentalPricePerHour}
           minimumRentalTime={courtDetail.minimumRentalTime}
           maximumRentalTime={courtDetail.maximumRentalTime}
