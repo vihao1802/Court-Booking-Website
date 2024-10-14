@@ -1,9 +1,17 @@
 "use client";
-import { Box, Button, TextField, Typography } from "@mui/material";
-import { useContext } from "react";
+import {
+  Box,
+  Button,
+  IconButton,
+  InputAdornment,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { useContext, useState } from "react";
 import { RecoveryContext } from "@/app/(auth)/password-recovery/page";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { Visibility, VisibilityOffOutlined } from "@mui/icons-material";
 
 const ResetPasswordSchema = Yup.object().shape({
   password: Yup.string()
@@ -11,11 +19,20 @@ const ResetPasswordSchema = Yup.object().shape({
     .required("Mật khẩu là bắt buộc"),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password"), undefined], "Mật khẩu xác nhận không khớp")
-    .required("Xác nhận mật khẩu là bắt buộc"),
+    .required("Mật khẩu xác nhận là bắt buộc"),
 });
 
 const ResetPassword = () => {
-  const { setPage, setShowConfetti } = useContext(RecoveryContext);
+  const { setPage } = useContext(RecoveryContext);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
 
   return (
     <Box
@@ -53,7 +70,6 @@ const ResetPassword = () => {
             // handle form submission
             console.log(values);
             setPage("recovered");
-            setShowConfetti(true);
           }}
         >
           {({ errors, touched }) => (
@@ -63,6 +79,7 @@ const ResetPassword = () => {
                 fullWidth
                 id="password"
                 name="password"
+                type={showPassword ? "text" : "password"}
                 label="Mật khẩu"
                 variant="outlined"
                 margin="dense"
@@ -70,19 +87,54 @@ const ResetPassword = () => {
                 color="success"
                 error={touched.password && !!errors.password}
                 helperText={<ErrorMessage name="password" />}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={togglePasswordVisibility}
+                        onMouseDown={togglePasswordVisibility}
+                      >
+                        {showPassword ? (
+                          <VisibilityOffOutlined sx={{ color: "black" }} />
+                        ) : (
+                          <Visibility sx={{ color: "black" }} />
+                        )}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
               />
               <Field
                 as={TextField}
                 fullWidth
                 id="confirmPassword"
                 name="confirmPassword"
-                label="Xác nhận mật khẩu"
+                type={showConfirmPassword ? "text" : "password"}
+                label="Mật khẩu xác nhận"
                 variant="outlined"
                 margin="dense"
                 size="medium"
                 color="success"
                 error={touched.confirmPassword && !!errors.confirmPassword}
                 helperText={<ErrorMessage name="confirmPassword" />}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={toggleConfirmPasswordVisibility}
+                        onMouseDown={toggleConfirmPasswordVisibility}
+                      >
+                        {showConfirmPassword ? (
+                          <VisibilityOffOutlined sx={{ color: "black" }} />
+                        ) : (
+                          <Visibility sx={{ color: "black" }} />
+                        )}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
               />
               <Button
                 type="submit"
@@ -91,41 +143,18 @@ const ResetPassword = () => {
                   marginTop: "10px",
                   width: "100%",
                   color: "white",
-                  backgroundColor: "green",
+                  backgroundColor: "var(--buttonColor)",
                   ":hover": {
-                    backgroundColor: "darkgreen",
+                    backgroundColor: "var(--buttonHoverColor)",
                   },
                   position: "relative",
                 }}
-                /* onClick={() => {
-                  setPage("recovered");
-                  setShowConfetti(true);
-                }} */
               >
                 Hoàn tất
               </Button>
             </Form>
           )}
         </Formik>
-        {/*  <TextField
-          fullWidth
-          id="outlined-basic"
-          label="Mật khẩu"
-          variant="outlined"
-          margin="dense"
-          size="medium"
-          color="success"
-        />
-        <TextField
-          fullWidth
-          id="outlined-basic"
-          label="Xác nhận mật khẩu"
-          variant="outlined"
-          margin="dense"
-          size="medium"
-          color="success"
-        />
- */}
       </Box>
     </Box>
   );

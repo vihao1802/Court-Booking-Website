@@ -93,9 +93,9 @@ const SendOTPEmail = () => {
                   marginTop: "10px",
                   width: "100%",
                   color: "white",
-                  backgroundColor: "green",
+                  backgroundColor: "var(--buttonColor)",
                   ":hover": {
-                    backgroundColor: "darkgreen",
+                    backgroundColor: "var(--buttonHoverColor)",
                   },
                   position: "relative",
                 }}
@@ -116,7 +116,7 @@ const SendOTPEmail = () => {
           Đã nhớ mật khẩu.{" "}
           <Link
             sx={{
-              color: "green",
+              color: "var(--buttonColor)",
               cursor: "pointer",
               textDecoration: "none",
             }}

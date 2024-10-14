@@ -1,24 +1,23 @@
-import {
-  Avatar,
-  Box,
-  Button,
-  IconButton,
-  Rating,
-  Typography,
-} from "@mui/material";
+"use client";
+import { Box, Button, Typography } from "@mui/material";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 interface BoxBookingButtonProps {
+  courtId: string;
   rentalPricePerHour: number;
   minimumRentalTime: number;
   maximumRentalTime: number;
 }
 
 const BoxBookingButton = ({
+  courtId,
   rentalPricePerHour,
   minimumRentalTime,
   maximumRentalTime,
 }: BoxBookingButtonProps) => {
+  const [loading, setLoading] = useState(false);
+
   return (
     <Box
       sx={{
@@ -81,8 +80,18 @@ const BoxBookingButton = ({
               backgroundColor: "darkgreen",
             },
           }}
+          disabled={loading}
         >
-          Đặt sân ngay
+          <Link
+            className="w-full h-full"
+            href={{
+              pathname: "/book-court",
+              query: courtId,
+            }}
+            onClick={() => setLoading(true)}
+          >
+            {loading ? "Loading..." : "Đặt sân ngay"}
+          </Link>
         </Button>
       </Box>
     </Box>

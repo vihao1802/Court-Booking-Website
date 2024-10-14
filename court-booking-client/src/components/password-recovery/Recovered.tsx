@@ -16,7 +16,7 @@ const Recovered = () => {
         textAlign: "center",
       }}
     >
-      <Confetti tweenDuration={5000} />
+      <Confetti width={innerWidth} height={innerHeight} />
       <Box
         sx={{
           display: "flex",
@@ -48,7 +48,7 @@ const Recovered = () => {
             cursor: "pointer",
             textDecoration: "none",
             ":hover": {
-              color: "green",
+              color: "var(--buttonColor)",
             },
             fontSize: "20px",
           }}

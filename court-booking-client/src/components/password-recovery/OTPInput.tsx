@@ -155,12 +155,12 @@ const OTPInput = () => {
           size="large"
           onClick={verifyOTP}
           sx={{
-            backgroundColor: "green",
             width: "100%",
             color: "white",
             transition: "background-color 0.3s",
+            backgroundColor: "var(--buttonColor)",
             ":hover": {
-              backgroundColor: "darkgreen",
+              backgroundColor: "var(--buttonHoverColor)",
             },
           }}
         >
@@ -184,7 +184,7 @@ const OTPInput = () => {
       >
         <Link
           sx={{
-            color: "gray",
+            color: "darkgray",
             textDecoration: "none",
             cursor: "pointer",
             fontFamily: ["Roboto", "Helvetica", "Arial", "sans-serif"].join(
@@ -211,7 +211,7 @@ const OTPInput = () => {
               color: "darkgray",
               cursor: "pointer",
               ":hover": {
-                color: "green",
+                color: "var(--buttonColor)",
                 textDecoration: "underline",
               },
             }}
