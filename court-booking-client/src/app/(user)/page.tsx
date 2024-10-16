@@ -115,6 +115,7 @@ const Home = () => {
         <Image
           src={coverPic}
           alt="cover"
+          priority
           style={{
             objectFit: "cover",
             objectPosition: "center",
@@ -146,7 +147,7 @@ const Home = () => {
         >
           <Typography
             sx={{
-              fontSize: "48px",
+              fontSize: "38px",
               color: "white",
               fontWeight: "bold",
             }}
@@ -155,7 +156,7 @@ const Home = () => {
           </Typography>
           <Typography
             sx={{
-              fontSize: "24px",
+              fontSize: "22px",
               color: "white",
             }}
           >
@@ -214,8 +215,13 @@ const Home = () => {
                     },
                   }}
                 >
-                  {exploreCategoriesTabs.map((tab) => (
-                    <Tab icon={tab.icon} label={tab.label} value={tab.value} />
+                  {exploreCategoriesTabs.map((tab, index) => (
+                    <Tab
+                      icon={tab.icon}
+                      label={tab.label}
+                      value={tab.value}
+                      key={index}
+                    />
                   ))}
                 </Tabs>
               </Box>

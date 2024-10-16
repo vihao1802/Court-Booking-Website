@@ -84,7 +84,7 @@ const page = () => {
             left: 0,
             width: "100%",
             height: "100%",
-            backgroundColor: "rgba(46, 125, 50, .6)", // Adjust opacity here
+            backgroundColor: "rgba(0, 0, 0, 0.2)",
             zIndex: 1,
           }}
         />
@@ -101,7 +101,7 @@ const page = () => {
         >
           <Typography
             sx={{
-              fontSize: "48px",
+              fontSize: "38px",
               color: "white",
               fontWeight: "bold",
             }}
@@ -177,8 +177,9 @@ const page = () => {
             >
               {types
                 .filter((court) => court.type === 1)
-                .map((court) => (
+                .map((court, index) => (
                   <Paper
+                    key={index}
                     sx={{
                       position: "relative",
                       width: "100px",
@@ -186,6 +187,9 @@ const page = () => {
                       padding: "10px",
                       backgroundColor: "rgba(46, 125, 50, .2)",
                       cursor: "pointer",
+                      "&:hover": {
+                        border: "1px solid #009265",
+                      },
                     }}
                   >
                     <Typography fontSize="13px" color="#222222">
@@ -225,8 +229,9 @@ const page = () => {
             >
               {types
                 .filter((court) => court.type === 2)
-                .map((court) => (
+                .map((court, index) => (
                   <Paper
+                    key={index}
                     sx={{
                       position: "relative",
                       width: "100px",
@@ -234,6 +239,9 @@ const page = () => {
                       padding: "10px",
                       backgroundColor: "rgba(46, 125, 50, .2)",
                       cursor: "pointer",
+                      "&:hover": {
+                        border: "1px solid #009265",
+                      },
                     }}
                   >
                     <Typography fontSize="13px" color="#222222">
