@@ -2,45 +2,52 @@ package com.court_booking_project.court_booking_server.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
+import org.hibernate.annotations.UuidGenerator;
 
 import java.util.Date;
 import java.util.UUID;
 
 @Entity
 @Table( name = "reservations")
-public class ReservationEntity {
+public class Reservation {
 
     @Id
-    @GeneratedValue
-    private UUID reservationId;
+    @UuidGenerator
+    private String id;
     private Date checkInDate;
     private Date checkOutDate;
     private float totalPrice;
     private Date reservationDate;
     private int reservationState;
     private Date createdAt;
-    private Date updatedAt;
 
-    public ReservationEntity() {
+    @ManyToOne
+    @JoinColumn(name = "courtId", referencedColumnName = "id", nullable = false)
+    private Court court;
+
+    @ManyToOne
+    @JoinColumn(name = "userId", referencedColumnName = "id", nullable = false)
+    private User user;
+
+    public Reservation() {
     }
 
-    public ReservationEntity(UUID reservationId, Date checkInDate, Date checkOutDate, float totalPrice, Date reservationDate, int reservationState, Date createdAt, Date updatedAt) {
-        this.reservationId = reservationId;
+    public Reservation(Date checkInDate, Date checkOutDate, float totalPrice, Date reservationDate, int reservationState, Date createdAt) {
+        this.id = UUID.randomUUID().toString();
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
         this.totalPrice = totalPrice;
         this.reservationDate = reservationDate;
         this.reservationState = reservationState;
         this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
 
-    public UUID getReservationId() {
-        return reservationId;
+    public String getReservationId() {
+        return id;
     }
 
-    public void setReservationId(UUID reservationId) {
-        this.reservationId = reservationId;
+    public void setReservationId(String id) {
+        this.id = id;
     }
 
     public Date getCheckInDate() {
@@ -91,11 +98,4 @@ public class ReservationEntity {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 }

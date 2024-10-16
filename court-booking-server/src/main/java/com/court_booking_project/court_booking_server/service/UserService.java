@@ -1,17 +1,15 @@
 package com.court_booking_project.court_booking_server.service;
 
-import com.court_booking_project.court_booking_server.model.User;
+import com.court_booking_project.court_booking_server.entity.User;
 
 import java.util.List;
 
 public interface UserService {
-    User saveUser(User user);
+    User add(User user);
 
-    List<User> getAllUsers();
+    List<User> getAll();
 
-    User getUserById(Long id);
+    User getById(String id);
 
-    boolean deleteUser(Long id);
-
-    User updateUser(Long id, User user);
+    User update(String id, User user);
 }
