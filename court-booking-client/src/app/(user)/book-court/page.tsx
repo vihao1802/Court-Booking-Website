@@ -7,7 +7,7 @@ import StepButton from "@mui/material/StepButton";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { StepLabel } from "@mui/material";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const steps = [
   "Date time",
@@ -20,7 +20,7 @@ const BookCourtPage = () => {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set<number>());
   const router = useRouter();
-  const courtId = router.query;
+  // const courtId = router.query;
 
   /*   const isStepOptional = (step: number) => {
     return step === 1;

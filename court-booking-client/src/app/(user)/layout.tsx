@@ -1,7 +1,14 @@
+import Header from "@/components/shared/Header";
+
 export default function UserRootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <main>{children}</main>;
+  return (
+    <main>
+      <Header />
+      {children}
+    </main>
+  );
 }
