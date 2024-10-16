@@ -67,10 +67,18 @@ const Header = () => {
               gap: 2,
             }}
           >
-            <Button variant="outlined" color="success">
+            <Button
+              variant="outlined"
+              color="success"
+              onClick={() => router.push("/sign-up")}
+            >
               Đăng ký
             </Button>
-            <Button variant="contained" color="success">
+            <Button
+              variant="contained"
+              color="success"
+              onClick={() => router.push("/sign-in")}
+            >
               Đăng nhập
             </Button>
           </Box>
@@ -96,8 +104,8 @@ const Header = () => {
             gap: 2,
           }}
         >
-          {navItems.map((item) => (
-            <Link href={item.url}>
+          {navItems.map((item, index) => (
+            <Link href={item.url} key={index}>
               <Typography
                 sx={{
                   fontWeight: 400,

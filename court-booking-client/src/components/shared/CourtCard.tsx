@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import React from "react";
+import { useRouter } from "next/navigation";
 import courtDemo from "@/assets/images/court_demo.png";
 
 interface CourtProps {
@@ -18,6 +19,8 @@ interface CourtProps {
 }
 
 const CourtCard = ({ name, people, type }: CourtProps) => {
+  const router = useRouter();
+
   return (
     <Card sx={{ maxWidth: 320 }}>
       <CardMedia
@@ -50,6 +53,7 @@ const CourtCard = ({ name, people, type }: CourtProps) => {
           sx={{
             width: "50%",
           }}
+          onClick={() => router.push("/court/1")}
         >
           Chi tiết
         </Button>
@@ -59,6 +63,7 @@ const CourtCard = ({ name, people, type }: CourtProps) => {
           sx={{
             width: "50%",
           }}
+          onClick={() => router.push("/book-court")}
         >
           Đặt ngay
         </Button>
