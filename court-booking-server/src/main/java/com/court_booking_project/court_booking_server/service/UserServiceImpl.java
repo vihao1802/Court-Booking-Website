@@ -1,7 +1,6 @@
 package com.court_booking_project.court_booking_server.service;
 
-import com.court_booking_project.court_booking_server.entity.UserEntity;
-import com.court_booking_project.court_booking_server.model.User;
+import com.court_booking_project.court_booking_server.entity.User;
 import com.court_booking_project.court_booking_server.repository.UserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -12,61 +11,34 @@ import java.util.stream.Collectors;
 @Service
 public class UserServiceImpl implements UserService{
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     @Override
-    public User saveUser(User user) {
-        UserEntity userEntity = new UserEntity();
-        BeanUtils.copyProperties(user, userEntity);
-        userRepository.save(userEntity);
+    public User add(User user) {
+        User userEntity = new User();
+        System.out.println(user.getUserName());
+        userRepository.save(user);
         return user;
     }
 
     @Override
-    public List<User> getAllUsers() {
-        List<UserEntity> userEntities
-                = userRepository.findAll();
-
-        List<User> users = userEntities
-                .stream()
-                .map(userEntity -> new User(
-                        userEntity.getId(),
-                        userEntity.getFirstName(),
-                        userEntity.getLastName(),
-                        userEntity.getEmailId()
-                ))
-                .collect(Collectors.toList());
-
-        return users;
+    public List<User> getAll() {
+        return userRepository.findAll();
     }
 
     @Override
-    public User getUserById(Long id) {
-        UserEntity userEntity
-                = userRepository.findById(id).get();
-        User user = new User();
-        BeanUtils.copyProperties(userEntity, user);
-        return user;
+    public User getById(String id) {
+        return userRepository.findById(id).get();
     }
 
     @Override
-    public boolean deleteUser(Long id) {
-        UserEntity user = userRepository.findById(id).get();
-        userRepository.delete(user);
-        return true;
-    }
-
-    @Override
-    public User updateUser(Long id, User user) {
-        UserEntity userEntity =
+    public User update(String id, User user) {
+        User userEntity =
                 userRepository.findById(id).get();
-        userEntity.setEmailId(user.getEmailId());
-        userEntity.setFirstName(user.getFirstName());
-        userEntity.setLastName(user.getLastName());
 
         userRepository.save(userEntity);
         return user;
