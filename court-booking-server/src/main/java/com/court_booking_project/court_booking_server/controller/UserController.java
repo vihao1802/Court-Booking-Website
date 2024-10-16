@@ -1,17 +1,17 @@
 package com.court_booking_project.court_booking_server.controller;
 
-import com.court_booking_project.court_booking_server.model.User;
+import com.court_booking_project.court_booking_server.entity.User;
 import com.court_booking_project.court_booking_server.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/")
 public class UserController {
+    @Autowired
     private final UserService userService;
 
     public UserController(UserService userService) {
@@ -20,32 +20,25 @@ public class UserController {
 
     @PostMapping("/users")
     public User saveUser(@RequestBody User user) {
-        return userService.saveUser(user);
+//        System.out.println(user);
+        return userService.add(user);
     }
 
     @GetMapping("/users")
     public List<User> getAllUsers() {
-        return userService.getAllUsers();
+        return userService.getAll();
     }
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable("id") Long id) {
-        User user = userService.getUserById(id);
+    public ResponseEntity<User> getUserById(@PathVariable("id") String id) {
+        User user = userService.getById(id);
         return ResponseEntity.ok(user);
     }
 
-    @DeleteMapping("/users/{id}")
-    public ResponseEntity<Map<String,Boolean>> deleteEmployee(@PathVariable("id") Long id) {
-        boolean deleted = userService.deleteUser(id);
-        Map<String,Boolean> response = new HashMap<>();
-        response.put("deleted", deleted);
-        return ResponseEntity.ok(response);
-    }
-
     @PutMapping("/users/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable("id") Long id,
+    public ResponseEntity<User> updateUser(@PathVariable("id") String id,
                                            @RequestBody User user) {
-        user = userService.updateUser(id,user);
+        user = userService.update(id,user);
         return ResponseEntity.ok(user);
     }
 }
