@@ -8,6 +8,7 @@ import React from "react";
 
 import { navItems } from "@/constants";
 import { usePathname, useRouter } from "next/navigation";
+import AppLogo from "./Logo";
 
 const lato = Lato({ subsets: ["latin"], weight: ["400", "700"] });
 
@@ -27,7 +28,8 @@ const Header = () => {
       <Box
         sx={{
           display: "flex",
-          margin: "0 auto",
+          width: "100%",
+          padding: "10px 20px",
         }}
       >
         <Box
@@ -35,11 +37,13 @@ const Header = () => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            width: "1056px",
-            height: "70px",
+            margin: "0 auto",
+            maxWidth: "1056px",
+            width: "100%",
+            // height: "70px",
           }}
         >
-          <Box
+          {/* <Box
             sx={{
               display: "flex",
               flexDirection: "row",
@@ -58,8 +62,8 @@ const Header = () => {
             >
               courtsite
             </Typography>
-          </Box>
-
+          </Box> */}
+          <AppLogo />
           <Box
             sx={{
               display: "flex",
@@ -92,7 +96,7 @@ const Header = () => {
         sx={{
           height: "50px",
           display: "flex",
-          padding: "10px 0",
+          padding: "10px 20px",
         }}
       >
         <Box

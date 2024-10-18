@@ -32,6 +32,7 @@ const BookingDetails = () => {
     [key: number]: boolean;
   }>({});
   const router = useRouter();
+  const [loadingNextPage, setLoadingNextPage] = useState(false);
   const { id } = useParams<{ id: string }>();
 
   const handleNext = () => {
@@ -136,13 +137,20 @@ const BookingDetails = () => {
                 Quay lại
               </Button>
               <Button
-                onClick={() => router.push(`/book-court/payment/${id}`)}
+                onClick={() => {
+                  setLoadingNextPage(true);
+                  router.push(`/book-court/payment/${id}`);
+                }}
+                disabled={loadingNextPage}
                 sx={{
                   marginLeft: "10px",
                   color: "white",
                   backgroundColor: "var(--buttonColor)",
                   ":hover": {
                     backgroundColor: "var(--buttonHoverColor)",
+                  },
+                  ":disabled": {
+                    backgroundColor: "gray",
                   },
                 }}
               >
