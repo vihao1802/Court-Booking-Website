@@ -84,10 +84,7 @@ const BoxBookingButton = ({
         >
           <Link
             className="w-full h-full"
-            href={{
-              pathname: "/book-court",
-              query: courtId,
-            }}
+            href={`/book-court/date-time/${courtId}`}
             onClick={() => setLoading(true)}
           >
             {loading ? "Loading..." : "Đặt sân ngay"}
