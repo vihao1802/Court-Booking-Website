@@ -79,6 +79,9 @@ const BoxBookingButton = ({
             ":hover": {
               backgroundColor: "darkgreen",
             },
+            ":disabled": {
+              backgroundColor: "gray",
+            },
           }}
           disabled={loading}
         >

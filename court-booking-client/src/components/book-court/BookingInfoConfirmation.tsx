@@ -65,7 +65,7 @@ const BookingInfoConfirmation = ({
         <Divider
           sx={{
             backgroundColor: "#e7e7e7",
-            padding: "10px 0",
+            margin: "15px 0",
           }}
         />
         <Box
@@ -81,7 +81,7 @@ const BookingInfoConfirmation = ({
         <Divider
           sx={{
             backgroundColor: "#e7e7e7",
-            padding: "10px 0",
+            margin: "15px 0",
           }}
         />
         <Box

@@ -12,6 +12,7 @@ import * as Yup from "yup";
 import { Form, Formik, Field, ErrorMessage } from "formik";
 import { useState } from "react";
 import { Visibility, VisibilityOffOutlined } from "@mui/icons-material";
+import AppLogo from "@/components/shared/Logo";
 
 const SignInSchema = Yup.object().shape({
   username: Yup.string().required("Tên đăng nhập là bắt buộc"),
@@ -87,6 +88,7 @@ const SignUpPage = () => {
           },
           display: "flex",
           overflow: "auto",
+          padding: "20px 0",
         }}
       >
         <Box
@@ -100,13 +102,17 @@ const SignUpPage = () => {
             },
           }}
         >
-          <Typography
-            sx={{
-              fontSize: "22px",
-            }}
-          >
-            Đăng ký tài khoản
-          </Typography>
+          <AppLogo />
+          <Box>
+            <Typography
+              sx={{
+                fontSize: "22px",
+                paddingTop: "30px",
+              }}
+            >
+              Đăng ký tài khoản
+            </Typography>
+          </Box>
           <Box
             sx={{
               display: "flex",

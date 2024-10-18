@@ -177,9 +177,13 @@ const Home = () => {
           elevation={3}
           sx={{
             height: "100%",
-            width: "1056px",
+            maxWidth: "1056px",
+            width: "100%",
             margin: "0 auto",
-            padding: "20px",
+            padding: {
+              xs: "0",
+              sm: "20px",
+            },
           }}
         >
           <Typography variant="h5" fontWeight="bold">
@@ -194,7 +198,12 @@ const Home = () => {
             }}
           >
             <TabContext value={value}>
-              <Box>
+              <Box
+                sx={{
+                  width: "100%",
+                  marginTop: "20px",
+                }}
+              >
                 <Tabs
                   value={value}
                   onChange={handleChange}
@@ -231,8 +240,9 @@ const Home = () => {
                 sx={{
                   display: "flex",
                   flexWrap: "wrap",
-                  padding: "10px",
+                  padding: "10px 0",
                   gap: 2,
+                  justifyContent: "space-between",
                 }}
               >
                 {courts
