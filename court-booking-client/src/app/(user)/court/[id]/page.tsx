@@ -224,8 +224,8 @@ const CourtDetail = ({ params: { id } }: { params: { id: string } }) => {
             <Typography>Loại sân</Typography>
             <Typography
               sx={{
-                backgroundColor: "lightblue",
-                color: "blue",
+                backgroundColor: "lightgreen",
+                color: "green",
                 borderRadius: "15px",
                 padding: "2px 10px",
               }}
@@ -586,73 +586,6 @@ const CourtDetail = ({ params: { id } }: { params: { id: string } }) => {
           minimumRentalTime={courtDetail.minimumRentalTime}
           maximumRentalTime={courtDetail.maximumRentalTime}
         />
-        {/* <Box
-          sx={{
-            width: "30%",
-            marginLeft: "auto",
-          }}
-        >
-          <Box
-            sx={{
-              position: "sticky",
-              top: "80px",
-              display: "flex",
-              flexDirection: "column",
-              width: "100%",
-              padding: "15px",
-              border: "2px solid #DBDBDB",
-              borderRadius: "10px",
-            }}
-          >
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                marginBottom: "20px",
-              }}
-            >
-              <Typography>Giá thuê</Typography>
-              <Typography>
-                {courtDetail.rentalPricePerHour.toLocaleString("vi-VN")} đ / 1
-                tiếng
-              </Typography>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                marginBottom: "20px",
-              }}
-            >
-              <Typography>Giờ thuê tối thiểu</Typography>
-              <Typography>{courtDetail.minimumRentalTime} tiếng</Typography>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                marginBottom: "20px",
-              }}
-            >
-              <Typography>Giờ thuê tối đa</Typography>
-              <Typography>{courtDetail.maximumRentalTime} tiếng</Typography>
-            </Box>
-            <Button
-              sx={{
-                backgroundColor: "green",
-                color: "white",
-                ":hover": {
-                  backgroundColor: "darkgreen",
-                },
-              }}
-            >
-              Đặt sân ngay
-            </Button>
-          </Box>
-        </Box> */}
       </Box>
     </Box>
   );
