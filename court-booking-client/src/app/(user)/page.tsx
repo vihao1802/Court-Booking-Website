@@ -210,9 +210,9 @@ const Home = () => {
                   variant="scrollable"
                   scrollButtons="auto"
                   sx={{
-                    color: "#009265",
+                    color: "var(--buttonColor)",
                     "& .MuiTab-root.Mui-selected": {
-                      color: "#009265",
+                      color: "var(--buttonColor)",
                     },
                     "& .MuiButtonBase-root": {
                       gap: 1,
@@ -220,7 +220,7 @@ const Home = () => {
                   }}
                   TabIndicatorProps={{
                     style: {
-                      backgroundColor: "#009265",
+                      backgroundColor: "var(--buttonColor)",
                     },
                   }}
                 >
@@ -238,11 +238,14 @@ const Home = () => {
               <TabPanel
                 value={value}
                 sx={{
-                  display: "flex",
-                  flexWrap: "wrap",
+                  display: "grid",
+                  gridTemplateColumns: {
+                    xs: "repeat(1,1fr)",
+                    sm: "repeat(2,1fr)",
+                    md: "repeat(3,1fr)",
+                  },
                   padding: "10px 0",
                   gap: 2,
-                  justifyContent: "space-between",
                 }}
               >
                 {courts
@@ -251,6 +254,7 @@ const Home = () => {
                     court.courtList.map((courtItem) => (
                       <CourtCard
                         key={courtItem.id}
+                        id={courtItem.id}
                         name={courtItem.name}
                         people={courtItem.people}
                         type={court.type}

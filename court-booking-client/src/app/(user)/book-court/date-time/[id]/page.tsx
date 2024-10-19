@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { Fragment } from "react";
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
@@ -14,58 +14,49 @@ const BookCourtDateTimePage = () => {
   const { id } = useParams<{ id: string }>();
 
   return (
-    <Box>
-      <Box
+    <Fragment>
+      <Stepper
+        activeStep={0}
         sx={{
-          width: "100%",
-          maxWidth: "1000px",
-          margin: "auto",
-          padding: "40px 10px",
+          "& .Mui-active": {
+            "& .MuiStepIcon-root": {
+              color: "var(--buttonColor)",
+            },
+            "& .MuiStepConnector-line": {
+              color: "var(--buttonColor)",
+            },
+          },
+          "& .Mui-completed": {
+            "& .MuiStepIcon-root": {
+              color: "var(--buttonColor)",
+            },
+            "& .MuiStepConnector-line": {
+              borderColor: "var(--buttonColor)",
+            },
+          },
+          marginBottom: "40px",
         }}
       >
-        <Stepper
-          activeStep={0}
-          sx={{
-            "& .Mui-active": {
-              "& .MuiStepIcon-root": {
-                color: "var(--buttonColor)",
-              },
-              "& .MuiStepConnector-line": {
-                color: "var(--buttonColor)",
-              },
-            },
-            "& .Mui-completed": {
-              "& .MuiStepIcon-root": {
-                color: "var(--buttonColor)",
-              },
-              "& .MuiStepConnector-line": {
-                borderColor: "var(--buttonColor)",
-              },
-            },
-            marginBottom: "40px",
-          }}
-        >
-          {steps.map((label, index) => {
-            const stepProps: { completed?: boolean } = {};
-            return (
-              <Step
-                key={label}
-                {...stepProps}
-                sx={{
-                  padding: "5px",
-                }}
-              >
-                <StepLabel StepIconComponent={ColorlibStepIcon}>
-                  {label}
-                </StepLabel>
-              </Step>
-            );
-          })}
-        </Stepper>
+        {steps.map((label, index) => {
+          const stepProps: { completed?: boolean } = {};
+          return (
+            <Step
+              key={label}
+              {...stepProps}
+              sx={{
+                padding: "5px",
+              }}
+            >
+              <StepLabel StepIconComponent={ColorlibStepIcon}>
+                {label}
+              </StepLabel>
+            </Step>
+          );
+        })}
+      </Stepper>
 
-        <BookingDetails />
-      </Box>
-    </Box>
+      <BookingDetails />
+    </Fragment>
   );
 };
 

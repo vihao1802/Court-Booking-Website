@@ -74,10 +74,10 @@ const BoxBookingButton = ({
         </Box>
         <Button
           sx={{
-            backgroundColor: "green",
+            backgroundColor: "var(--buttonColor)",
             color: "white",
             ":hover": {
-              backgroundColor: "darkgreen",
+              backgroundColor: "var(--buttonHoverColor)",
             },
             ":disabled": {
               backgroundColor: "gray",
@@ -90,7 +90,7 @@ const BoxBookingButton = ({
             href={`/book-court/date-time/${courtId}`}
             onClick={() => setLoading(true)}
           >
-            {loading ? "Loading..." : "Đặt sân ngay"}
+            Đặt sân ngay
           </Link>
         </Button>
       </Box>

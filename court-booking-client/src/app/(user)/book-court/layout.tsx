@@ -1,4 +1,5 @@
 "use client";
+import { Box } from "@mui/material";
 import React, { createContext, useState } from "react";
 
 export const BookCourtContext = createContext<{
@@ -26,7 +27,16 @@ const BookCourtLayout = ({ children }: { children: React.ReactNode }) => {
     <BookCourtContext.Provider
       value={{ date, setDate, startTime, setStartTime, duration, setDuration }}
     >
-      <div>{children}</div>
+      <Box
+        sx={{
+          width: "100%",
+          maxWidth: "1000px",
+          margin: "auto",
+          padding: "40px 10px",
+        }}
+      >
+        {children}
+      </Box>
     </BookCourtContext.Provider>
   );
 };
