@@ -1,6 +1,7 @@
 "use client";
 import BoxBookingButton from "@/components/court-detail/BoxBookingButton";
 import ModalSliderImages from "@/components/court-detail/ModalSliderImages";
+import Loader from "@/components/shared/Loader";
 import { Avatar, Box, Rating, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
@@ -97,7 +98,7 @@ const CourtDetail = ({ params: { id } }: { params: { id: string } }) => {
     });
   }, []);
 
-  if (!courtDetail) return <Box>Loading...</Box>;
+  if (!courtDetail) return <Loader />;
 
   return (
     <Box
@@ -224,8 +225,8 @@ const CourtDetail = ({ params: { id } }: { params: { id: string } }) => {
             <Typography>Loại sân</Typography>
             <Typography
               sx={{
-                backgroundColor: "lightgreen",
-                color: "green",
+                backgroundColor: "var(--buttonLightColor)",
+                color: "var(--buttonColor)",
                 borderRadius: "15px",
                 padding: "2px 10px",
               }}

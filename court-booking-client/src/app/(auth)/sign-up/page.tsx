@@ -260,65 +260,6 @@ const SignUpPage = () => {
                 </Form>
               )}
             </Formik>
-            {/*  <TextField
-              fullWidth
-              id="outlined-basic"
-              label="Tên đăng nhập"
-              variant="outlined"
-              margin="dense"
-              size="medium"
-              color="success"
-            />
-            <TextField
-              fullWidth
-              id="outlined-basic"
-              label="Email"
-              variant="outlined"
-              margin="dense"
-              size="medium"
-              color="success"
-            />
-            <TextField
-              fullWidth
-              id="outlined-basic"
-              label="Số điện thoại"
-              variant="outlined"
-              margin="dense"
-              size="medium"
-              color="success"
-            />
-            <TextField
-              fullWidth
-              id="outlined-basic"
-              label="Mật khẩu"
-              variant="outlined"
-              margin="dense"
-              size="medium"
-              color="success"
-            />
-            <TextField
-              fullWidth
-              id="outlined-basic"
-              label="Xác nhận mật khẩu"
-              variant="outlined"
-              margin="dense"
-              size="medium"
-              color="success"
-            /> */}
-            {/* <Button
-              size="large"
-              sx={{
-                marginTop: "10px",
-                width: "100%",
-                color: "white",
-                backgroundColor: "green",
-                ":hover": {
-                  backgroundColor: "darkgreen",
-                },
-              }}
-            >
-              Đăng ký
-            </Button> */}
           </Box>
 
           <Box>
@@ -326,7 +267,7 @@ const SignUpPage = () => {
               Đã có tài khoản.{" "}
               <Link
                 sx={{
-                  color: "green",
+                  color: "var(--buttonColor)",
                   cursor: "pointer",
                   textDecoration: "none",
                 }}

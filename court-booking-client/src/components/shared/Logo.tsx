@@ -17,14 +17,15 @@ const AppLogo = () => {
         justifyContent: "center",
         cursor: "pointer",
         gap: 1,
+        padding: "0 5px",
       }}
       onClick={() => router.push("/")}
     >
       <Image src="/icons/court.png" alt="icon" height={32} width={32} />
       <Typography
         fontSize="32px"
-        color="success"
         fontFamily={lato.style.fontFamily}
+        sx={{ color: "var(--buttonColor)" }}
       >
         courtsite
       </Typography>

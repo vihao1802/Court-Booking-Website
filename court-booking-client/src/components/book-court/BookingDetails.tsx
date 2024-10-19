@@ -82,7 +82,10 @@ const BookingDetails = () => {
       >
         <Box
           sx={{
-            padding: "0 10px",
+            padding: "10px",
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
           }}
         >
           <Stepper activeStep={activeStep} orientation="vertical" nonLinear>
@@ -126,16 +129,19 @@ const BookingDetails = () => {
                 flexDirection: "row",
                 justifyContent: "right",
                 padding: "10px 0 0",
+                marginTop: "auto",
               }}
             >
-              <Button
-                onClick={handleBack}
-                sx={{
-                  color: "gray",
-                }}
-              >
-                Quay lại
-              </Button>
+              {!loadingNextPage && (
+                <Button
+                  onClick={handleBack}
+                  sx={{
+                    color: "gray",
+                  }}
+                >
+                  Quay lại
+                </Button>
+              )}
               <Button
                 onClick={() => {
                   setLoadingNextPage(true);
@@ -168,6 +174,7 @@ const BookingDetails = () => {
           padding: "10px",
           boxShadow: "0 5px 25px rgba(0, 0, 0, 0.2)",
           borderRadius: "10px",
+          height: "fit-content",
         }}
       >
         <Box
@@ -246,8 +253,8 @@ const BookingDetails = () => {
               <Typography>Loại sân</Typography>
               <Typography
                 sx={{
-                  backgroundColor: "lightgreen",
-                  color: "green",
+                  backgroundColor: "var(--buttonLightColor)",
+                  color: "var(--buttonColor)",
                   borderRadius: "15px",
                   padding: "2px 10px",
                 }}

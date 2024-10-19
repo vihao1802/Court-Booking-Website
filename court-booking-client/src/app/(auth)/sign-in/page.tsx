@@ -186,7 +186,7 @@ const SignInPage = () => {
                     type="submit"
                     size="large"
                     sx={{
-                      marginTop: "10px",
+                      marginTop: "25px",
                       width: "100%",
                       color: "white",
                       backgroundColor: "var(--buttonColor)",
@@ -207,7 +207,7 @@ const SignInPage = () => {
               Chưa có tài khoản.{" "}
               <Link
                 sx={{
-                  color: "green",
+                  color: "var(--buttonColor)",
                   cursor: "pointer",
                   textDecoration: "none",
                 }}

@@ -73,14 +73,25 @@ const Header = () => {
           >
             <Button
               variant="outlined"
-              color="success"
+              sx={{
+                color: "var(--buttonColor)",
+                borderColor: "gray",
+                ":hover": {
+                  borderColor: "var(--buttonHoverColor)",
+                },
+              }}
               onClick={() => router.push("/sign-up")}
             >
               Đăng ký
             </Button>
             <Button
               variant="contained"
-              color="success"
+              sx={{
+                backgroundColor: "var(--buttonColor)",
+                ":hover": {
+                  backgroundColor: "var(--buttonHoverColor)",
+                },
+              }}
               onClick={() => router.push("/sign-in")}
             >
               Đăng nhập
