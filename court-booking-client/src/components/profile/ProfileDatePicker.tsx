@@ -1,40 +1,38 @@
-import * as React from "react";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { Box, Typography } from "@mui/material";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { LocalizationProvider, DatePicker } from "@mui/x-date-pickers";
 import dayjs, { Dayjs } from "dayjs";
-import { Box, Button } from "@mui/material";
-import { BookCourtContext } from "@/app/(user)/book-court/layout";
+import React, { useState } from "react";
 
-export default function BasicDatePicker({
-  handleNext,
-  size,
-}: {
-  handleNext: () => void;
+interface ProfileDatePickerProps {
+  id: string;
+  minDate?: Dayjs;
+  maxDate?: Dayjs;
+  label?: string;
   size?: "small" | "medium";
-}) {
-  const { date, setDate } = React.useContext(BookCourtContext);
-  const today = dayjs();
-  const minDate = today;
-  const maxDate = today.add(7, "day");
-  const [showContinueButton, setShowContinueButton] = React.useState(
-    date ? true : false
-  );
+  children?: React.ReactNode;
+}
+
+const ProfileDatePicker: React.FC<ProfileDatePickerProps> = ({
+  minDate,
+  maxDate,
+  label,
+  children,
+}) => {
+  const [date, setDate] = useState(dayjs().toISOString());
 
   const handleDateChange = (val: Dayjs | null) => {
     if (val) {
       setDate(val.toISOString());
-      setShowContinueButton(true);
     }
   };
-
   return (
     <Box sx={{ display: "flex", flexDirection: "column" }}>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["DatePicker"]}>
           <DatePicker
-            label="Ngày"
+            label={label}
             minDate={minDate}
             maxDate={maxDate}
             defaultValue={date ? dayjs(date) : null}
@@ -65,22 +63,18 @@ export default function BasicDatePicker({
           />
         </DemoContainer>
       </LocalizationProvider>
-      {showContinueButton && (
-        <Button
-          onClick={handleNext}
+      {children && (
+        <Typography
           sx={{
-            marginLeft: "auto",
-            marginTop: "10px",
-            color: "white",
-            backgroundColor: "var(--buttonColor)",
-            ":hover": {
-              backgroundColor: "var(--buttonHoverColor)",
-            },
+            color: "gray",
+            fontSize: "0.7rem",
           }}
         >
-          Tiếp tục
-        </Button>
+          {children}
+        </Typography>
       )}
     </Box>
   );
-}
+};
+
+export default ProfileDatePicker;
