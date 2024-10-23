@@ -1,27 +1,28 @@
 package com.court_booking_project.court_booking_server.controller;
 
+import com.court_booking_project.court_booking_server.DTO.Request.CreateUserRequest;
+import com.court_booking_project.court_booking_server.DTO.Response.UserResponse;
 import com.court_booking_project.court_booking_server.entity.User;
-import com.court_booking_project.court_booking_server.service.UserService;
+import com.court_booking_project.court_booking_server.service.Intefaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
+import jakarta.validation.*;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/")
 public class UserController {
     @Autowired
-    private final UserService userService;
+    private final IUserService userService;
 
-    public UserController(UserService userService) {
+    public UserController(IUserService userService) {
         this.userService = userService;
     }
-
-    @PostMapping("/users")
-    public User saveUser(@RequestBody User user) {
-//        System.out.println(user);
-        return userService.add(user);
+    @PostMapping("/users/register")
+    public UserResponse Register(@RequestBody @Valid CreateUserRequest createUserRequest) {
+        return  userService.add(createUserRequest);
     }
 
     @GetMapping("/users")
