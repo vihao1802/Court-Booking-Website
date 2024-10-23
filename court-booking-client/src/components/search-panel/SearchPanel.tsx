@@ -78,7 +78,7 @@ const SearchPanel = () => {
         height: pathname === "/" ? "500px" : "200px",
         width: "100%",
         position: "relative",
-        marginBottom: "70px",
+        marginBottom: pathname === "/" ? "10px" : "70px",
       }}
     >
       <Image
