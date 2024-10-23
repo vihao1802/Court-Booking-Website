@@ -2,6 +2,7 @@ import { Box, TextField, TextFieldVariants, Typography } from "@mui/material";
 import React from "react";
 interface ProfileTextFieldProps {
   id: string;
+  disabled?: boolean;
   variant?: TextFieldVariants;
   label?: string;
   size?: "small" | "medium";
@@ -9,6 +10,7 @@ interface ProfileTextFieldProps {
 }
 const ProfileTextField: React.FC<ProfileTextFieldProps> = ({
   id,
+  disabled = false,
   variant = "outlined",
   label,
   size = "small",
@@ -24,6 +26,7 @@ const ProfileTextField: React.FC<ProfileTextFieldProps> = ({
     >
       <TextField
         id={id}
+        disabled={disabled}
         variant={variant}
         label={label}
         size={size}
