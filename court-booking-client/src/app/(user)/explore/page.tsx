@@ -140,8 +140,9 @@ const page = () => {
                       backgroundColor: "rgba(46, 125, 50, .2)",
                       cursor: "pointer",
                       "&:hover": {
-                        border: "1px solid #009265",
+                        border: "1px solid var(--buttonColor)",
                       },
+                      border: "1px solid white",
                     }}
                   >
                     <Typography fontSize="13px" color="#222222">
@@ -192,8 +193,9 @@ const page = () => {
                       backgroundColor: "rgba(46, 125, 50, .2)",
                       cursor: "pointer",
                       "&:hover": {
-                        border: "1px solid #009265",
+                        border: "1px solid var(--buttonColor)",
                       },
+                      border: "1px solid white",
                     }}
                   >
                     <Typography fontSize="13px" color="#222222">

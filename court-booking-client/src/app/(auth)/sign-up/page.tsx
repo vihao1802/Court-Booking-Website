@@ -12,6 +12,7 @@ import * as Yup from "yup";
 import { Form, Formik, Field, ErrorMessage } from "formik";
 import { useState } from "react";
 import { Visibility, VisibilityOffOutlined } from "@mui/icons-material";
+import AppLogo from "@/components/shared/Logo";
 
 const SignInSchema = Yup.object().shape({
   username: Yup.string().required("Tên đăng nhập là bắt buộc"),
@@ -87,6 +88,7 @@ const SignUpPage = () => {
           },
           display: "flex",
           overflow: "auto",
+          padding: "20px 0",
         }}
       >
         <Box
@@ -100,13 +102,17 @@ const SignUpPage = () => {
             },
           }}
         >
-          <Typography
-            sx={{
-              fontSize: "22px",
-            }}
-          >
-            Đăng ký tài khoản
-          </Typography>
+          <AppLogo />
+          <Box>
+            <Typography
+              sx={{
+                fontSize: "22px",
+                paddingTop: "30px",
+              }}
+            >
+              Đăng ký tài khoản
+            </Typography>
+          </Box>
           <Box
             sx={{
               display: "flex",
@@ -254,65 +260,6 @@ const SignUpPage = () => {
                 </Form>
               )}
             </Formik>
-            {/*  <TextField
-              fullWidth
-              id="outlined-basic"
-              label="Tên đăng nhập"
-              variant="outlined"
-              margin="dense"
-              size="medium"
-              color="success"
-            />
-            <TextField
-              fullWidth
-              id="outlined-basic"
-              label="Email"
-              variant="outlined"
-              margin="dense"
-              size="medium"
-              color="success"
-            />
-            <TextField
-              fullWidth
-              id="outlined-basic"
-              label="Số điện thoại"
-              variant="outlined"
-              margin="dense"
-              size="medium"
-              color="success"
-            />
-            <TextField
-              fullWidth
-              id="outlined-basic"
-              label="Mật khẩu"
-              variant="outlined"
-              margin="dense"
-              size="medium"
-              color="success"
-            />
-            <TextField
-              fullWidth
-              id="outlined-basic"
-              label="Xác nhận mật khẩu"
-              variant="outlined"
-              margin="dense"
-              size="medium"
-              color="success"
-            /> */}
-            {/* <Button
-              size="large"
-              sx={{
-                marginTop: "10px",
-                width: "100%",
-                color: "white",
-                backgroundColor: "green",
-                ":hover": {
-                  backgroundColor: "darkgreen",
-                },
-              }}
-            >
-              Đăng ký
-            </Button> */}
           </Box>
 
           <Box>
@@ -320,7 +267,7 @@ const SignUpPage = () => {
               Đã có tài khoản.{" "}
               <Link
                 sx={{
-                  color: "green",
+                  color: "var(--buttonColor)",
                   cursor: "pointer",
                   textDecoration: "none",
                 }}

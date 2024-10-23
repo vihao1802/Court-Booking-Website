@@ -12,6 +12,7 @@ import * as Yup from "yup";
 import { Form, Formik, Field, ErrorMessage } from "formik";
 import { useState } from "react";
 import { Visibility, VisibilityOffOutlined } from "@mui/icons-material";
+import AppLogo from "@/components/shared/Logo";
 
 const SignInSchema = Yup.object().shape({
   email: Yup.string().email("Email không hợp lệ").required("Email là bắt buộc"),
@@ -92,13 +93,17 @@ const SignInPage = () => {
             },
           }}
         >
-          <Typography
-            sx={{
-              fontSize: "22px",
-            }}
-          >
-            Đăng nhập
-          </Typography>
+          <AppLogo />
+          <Box>
+            <Typography
+              sx={{
+                fontSize: "22px",
+                paddingTop: "30px",
+              }}
+            >
+              Đăng nhập
+            </Typography>
+          </Box>
           <Box
             sx={{
               display: "flex",
@@ -181,7 +186,7 @@ const SignInPage = () => {
                     type="submit"
                     size="large"
                     sx={{
-                      marginTop: "10px",
+                      marginTop: "25px",
                       width: "100%",
                       color: "white",
                       backgroundColor: "var(--buttonColor)",
@@ -202,7 +207,7 @@ const SignInPage = () => {
               Chưa có tài khoản.{" "}
               <Link
                 sx={{
-                  color: "green",
+                  color: "var(--buttonColor)",
                   cursor: "pointer",
                   textDecoration: "none",
                 }}
