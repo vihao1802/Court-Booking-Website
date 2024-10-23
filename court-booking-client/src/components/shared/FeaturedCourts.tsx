@@ -169,6 +169,7 @@ const FeaturedCourts = () => {
                     name={courtItem.name}
                     people={courtItem.people}
                     type={court.type}
+                    id={""}
                   />
                 ))
               )}
